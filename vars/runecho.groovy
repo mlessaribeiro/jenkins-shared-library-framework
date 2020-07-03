@@ -1,4 +1,4 @@
 def call(String arg) {
-    sh script: "pwd", returnStdout: true
+    sh script: "mvn clean", returnStdout: true
     //echo 'Wololo'
 }
