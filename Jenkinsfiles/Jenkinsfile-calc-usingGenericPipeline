@@ -1,0 +1,3 @@
+node {
+    pipelineMaven 'https://github.com/mlessaribeiro/calc.git', 'calc'
+}

@@ -1,0 +1,35 @@
+pipeline {
+    agent { label 'maven' }
+    
+    tools {
+        maven 'M3'
+    }    
+
+    stages {
+        stage('Scm') {
+            steps {
+                gitCheckout 'https://github.com/mlessaribeiro/calc.git', 'calc'           
+            }
+        }
+        stage('Compile') {
+            steps {
+                mavenCompile ""
+            }
+        }
+        stage('Test') {
+            steps {
+                mavenTests ""
+            }
+        }
+        stage('Build') {
+            steps {
+                mavenBuild ""
+            }
+        }        
+        stage('Deploy') {
+            steps {
+                deploy ""
+            }
+        }            
+    }
+}
