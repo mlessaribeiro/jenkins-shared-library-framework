@@ -1,6 +1,6 @@
 // , Map config=[:], Closure body
 def call(String repository) {
-    node {
+    node('maven') {
         stage('Scm') {
             sh "rm -r calc"
             sh "git clone " + repository
