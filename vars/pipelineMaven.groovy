@@ -4,9 +4,9 @@ def call(String repository) {
         stage('Scm') {
             sh "rm -r calc"
             sh "git clone " + repository
-            sh "cd calc"
         }
         stage('Compile') {
+            sh "cd calc"
             sh "mvn -Dmaven.test.skip=true clean install "
         }
         stage('Test') {
