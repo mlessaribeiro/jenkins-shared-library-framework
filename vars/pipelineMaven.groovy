@@ -5,24 +5,16 @@ def call(String repository) {
             sh "git clone " + repository
         }
         stage('Compile') {
-            steps {
-                sh "mvn -Dmaven.test.skip=true clean install "
-            }
+            sh "mvn -Dmaven.test.skip=true clean install "
         }
         stage('Test') {
-            steps {
-                mavenTests ""
-            }
+            sh "mvn -Dmaven.test.skip=true clean install "
         }
         stage('Build') {
-            steps {
-                mavenBuild ""
-            }
+            sh "mvn -Dmaven.test.skip=true package "
         }        
         stage('Deploy') {
-            steps {
-                deploy ""
-            }
+            echo 'Fazendo deploy na AWS'
         }
         // body()
     }    
