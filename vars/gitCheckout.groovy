@@ -1,3 +1,4 @@
-def call(String repositorio) {
-    sh "git clone " + repositorio
+def call(String repositorio, String dir) {
+    sh "rm -r $dir"
+    sh "git clone $repositorio"
 }
