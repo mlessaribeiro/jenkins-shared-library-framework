@@ -2,13 +2,11 @@
 def call(String repository) {
     node {
         stage('Scm') {
-            steps {
-                gitCheckout repository            
-            }
+            sh "git clone " + repositorio
         }
         stage('Compile') {
             steps {
-                mavenCompile ""
+                sh "mvn -Dmaven.test.skip=true clean install " + args
             }
         }
         stage('Test') {
