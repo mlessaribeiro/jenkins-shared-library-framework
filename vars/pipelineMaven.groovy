@@ -12,10 +12,16 @@ def call(String repository) {
             """            
         }
         stage('Test') {
-            sh "mvn -Dmaven.test.skip=true clean install "
+            sh """
+                cd calc
+                mvn test
+            """
         }
         stage('Build') {
-            sh "mvn -Dmaven.test.skip=true package "
+            sh """
+                cd calc
+                mvn -Dmaven.test.skip=true package
+            """
         }        
         stage('Deploy') {
             echo 'Fazendo deploy na AWS'
