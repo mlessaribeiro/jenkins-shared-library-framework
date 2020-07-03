@@ -6,7 +6,10 @@ def call(String repository) {
             sh "git clone " + repository
         }
         stage('Compile') {
-            sh "cd calc | mvn -Dmaven.test.skip=true clean install "
+            sh """
+                cd calc
+                mvn -Dmaven.test.skip=true clean install
+            """            
         }
         stage('Test') {
             sh "mvn -Dmaven.test.skip=true clean install "
