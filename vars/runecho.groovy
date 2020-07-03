@@ -1,3 +1,4 @@
 def call(String arg) {
-    echo 'Wololo'
+    sh script: "pwd", returnStdout: true
+    //echo 'Wololo'
 }
