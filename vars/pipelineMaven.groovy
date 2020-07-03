@@ -1,25 +1,25 @@
 // , Map config=[:], Closure body
-def call(String repository) {
+def call(String repository, String dir) {
     node('maven') {
         stage('Scm') {
-            sh "rm -r calc"
+            sh "rm -r " + dir
             sh "git clone " + repository
         }
         stage('Compile') {
             sh """
-                cd calc
+                cd $dir
                 mvn -Dmaven.test.skip=true clean install
             """            
         }
         stage('Test') {
             sh """
-                cd calc
+                cd $dir
                 mvn test
             """
         }
         stage('Build') {
             sh """
-                cd calc
+                cd $dir
                 mvn -Dmaven.test.skip=true package
             """
         }        
