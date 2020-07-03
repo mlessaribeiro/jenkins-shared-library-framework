@@ -1,3 +1,3 @@
-def call() {
-    sh "mvn -Dmaven.test.skip=true package"
+def call(args) {
+    sh "mvn -Dmaven.test.skip=true package " + args
 }
