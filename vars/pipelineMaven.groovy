@@ -2,6 +2,9 @@
 def call(String repository) {
     node {
         stage('Scm') {
+            sh "rm -r job"
+            sh "mkdir job"
+            sh "cd job"
             sh "git clone " + repository
         }
         stage('Compile') {
