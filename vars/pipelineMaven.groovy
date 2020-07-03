@@ -2,6 +2,7 @@
 def call(String repository) {
     node('maven') {
         stage('Scm') {
+            sh "rm -r calc"
             sh "git clone " + repository
             sh "cd calc"
         }
